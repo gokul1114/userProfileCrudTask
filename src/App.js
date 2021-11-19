@@ -1,7 +1,8 @@
 import './App.css';
 import { Link, Route, Switch, useHistory, useParams} from "react-router-dom";
 import { useState,useEffect } from 'react';
-
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 function App() {
   return (
@@ -87,8 +88,8 @@ const getApi = () => {
                     <td>{e.email}</td>
                     <td>{e.phoneNo}</td>
                     <td>
-                      <button onClick = {() => history.push("/editUser/"+e.id)}>edit</button>
-                      <button onClick = {() => {deleteData(e.id)}}>delete</button>
+                      <Button variant="contained" color="success" onClick = {() => history.push("/editUser/"+e.id)}>edit</Button>
+                      <Button variant="outlined" color="error" onClick = {() => {deleteData(e.id)}}>delete</Button>
                     </td>
                  </tr>
         })}
@@ -120,10 +121,17 @@ function AddUser() {
  }
  return(
   <div>
+     <TextField id="outlined-required" label="name" type = "text" onChange = {(e)=>{setName(e.target.value)}}/>
+     <TextField id="outlined-required" label="email" type = "text" onChange = {(e)=>{setName(e.target.value)}}/>
+     <TextField id="outlined-required" label="phoneNo" type = "text"onChange = {(e)=>{setPhoneNo(e.target.value)}}/>
+     
+{/*      
     <input type = "text" onChange = {(e)=>{setName(e.target.value)}} placeholder = "name"></input>
     <input type = "text" onChange = {(e)=>{setEmail(e.target.value)}} placeholder = "email"></input>
-    <input type = "text" onChange = {(e)=>{setPhoneNo(e.target.value)}} placeholder = "phoneNo"></input>
-    <input type = "submit" onClick = {addData}></input>
+    <input type = "text" onChange = {(e)=>{setPhoneNo(e.target.value)}} placeholder = "phoneNo"></input> */}
+    <br /><br />
+    <Button  variant="contained" color="success" type = "submit" onClick = {addData}>submit</Button>
+    
   </div>
  ); 
 }
